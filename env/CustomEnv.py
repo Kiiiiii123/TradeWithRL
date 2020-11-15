@@ -49,7 +49,12 @@ class StockTradingEnv(gym.Env):
             self.df.loc[self.current_step, 'pbMRQ'] / 100,
             self.df.loc[self.current_step, 'psTTM'] / 100,
             self.df.loc[self.current_step, 'pctChg'] / 1e3,
-
+            self.balance / MAX_ACCOUNT_BALANCE,
+            self.max_net_worth / MAX_ACCOUNT_BALANCE,
+            self.shares_held / MAX_NUM_SHARES,
+            self.cost_basis / MAX_SHARE_PRICE,
+            self.total_shares_sold / MAX_NUM_SHARES,
+            self.total_sales_value / (MAX_NUM_SHARES * MAX_SHARE_PRICE)
         ])
 
         return obs
