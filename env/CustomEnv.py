@@ -100,13 +100,27 @@ class StockTradingEnv(gym.Env):
         self._take_action(action)
         done = False
 
+        self.current_step += 1
+        if self.current_step > len(self.df.loc[:, 'open'].values) - 1:
+            # 循环训练
+            self.current_step = 0
+            # done = True
 
+        delay_modifier = (self.current_step / MAX_STEPS)
+        reward = self.net_worth - INITIAL_ACCOUNT_BALANCE
+        reward = 1 if reward>0 else -100
+
+        if self.net_worth <= 0:
+            done = True
+
+        obs = self._next_observation()
 
         return obs, reward, done, {}
 
 
     def reset(self):
 
-    def rencer(self):
+
+    def render(self):
 
 
