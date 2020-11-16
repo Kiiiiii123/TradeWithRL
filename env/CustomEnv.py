@@ -108,7 +108,7 @@ class StockTradingEnv(gym.Env):
 
         delay_modifier = (self.current_step / MAX_STEPS)
         reward = self.net_worth - INITIAL_ACCOUNT_BALANCE
-        reward = 1 if reward>0 else -100
+        reward = 1 if reward > 0 else -100
 
         if self.net_worth <= 0:
             done = True
@@ -117,9 +117,24 @@ class StockTradingEnv(gym.Env):
 
         return obs, reward, done, {}
 
+    def reset(self, new_df=None):
+        self.balance = INITIAL_ACCOUNT_BALANCE
+        self.net_worth = INITIAL_ACCOUNT_BALANCE
+        self.max_net_worth  = INITIAL_ACCOUNT_BALANCE
+        self.shares_held = 0
+        self.cost_basis = 0
+        self.total_shares_sold = 0
+        self.total_shares_sold = 0
 
-    def reset(self):
+        # 将测试数据集传递到环境中
+        if new_df:
+            self.df = new_df
 
+        # self.currebt_step = random.randint(
+        #   0, len(self.df.loc[:, 'open'].values) - 6)
+        self.current_step = 0
+
+        return self._next_observation()
 
     def render(self):
 
