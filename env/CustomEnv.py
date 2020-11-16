@@ -56,7 +56,7 @@ class StockTradingEnv(gym.Env):
             # 买入成本
             self.cost_basis / MAX_SHARE_PRICE,
             self.total_shares_sold / MAX_NUM_SHARES,
-            self.total_sales_value / (MAX_NUM_SHARES * MAX_SHARE_PRICE)
+            self.total_sales_value / (MAX_NUM_SHARES * MAX_SHARE_PRICE),
         ])
 
         return obs
@@ -136,6 +136,16 @@ class StockTradingEnv(gym.Env):
 
         return self._next_observation()
 
-    def render(self):
+    def render(self, mode='human', close=False):
+        # 打印一些数据指标到屏幕上即可
+        profit = self.net_worth - INITIAL_ACCOUNT_BALANCE
 
+        print('-'*30)
+        print(f'Step: {self.current_step}')
+        print(f'Balance: {self.balance}')
+        print(f'Shares_held: {self.shares_held} (Total_sold: {self.total_shares_sold})')
+        print(f'Avg cost for held shares: {self.cost_basis} (Total sales: {self.total_sales_value})')
+        print(f'Net worth: {self.net_worth} (Max net worth: {self.max_net_worth})')
+        print(f'Profit: {profit}')
 
+        return profit
