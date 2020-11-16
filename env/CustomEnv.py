@@ -124,7 +124,7 @@ class StockTradingEnv(gym.Env):
         self.shares_held = 0
         self.cost_basis = 0
         self.total_shares_sold = 0
-        self.total_shares_sold = 0
+        self.total_sales_value = 0
 
         # 将测试数据集传递到环境中
         if new_df:
