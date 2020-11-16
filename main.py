@@ -11,3 +11,6 @@ from env.CustomEnv import StockTradingEnv
 
 
 def tradestock()
+
+
+if __name__ == '__main__':
