@@ -24,10 +24,38 @@ def train_stock_trading(stock_file):
     model = PPO2(MlpPolicy, env, verbose=0, tensorboard_log='./log')
     model.learn(total_timesteps=int(1e4))
 
-    df_test =
+    df_test = pd.read_csv(stock_file.replace('train', 'test'))
+
+    env = DummyVecEnv([lambda: StockTradingEnv(df_test)])
+    obs = env.reset()
+    for i in range(len(df_test) - 1):
+        action, _status = model.predict(obs)
+        obs, reward, done, info = env.step(action)
+        profit = env.render()
+        day_profits.append(profit)
+        if done:
+            break
+
+    return day_profits
+
+def find_file():
 
 
 
-def test_stock_trading()
+
+def test_stock_trading():
+
+
+
 
 if __name__ == '__main__':
+    test_stock_trading()
+
+
+
+
+
+
+
+
+
