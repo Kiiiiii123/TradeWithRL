@@ -29,10 +29,10 @@ class StockTradingEnv(gym.Env):
         self.df = df
         self.reward_range = (0, MAX_ACCOUNT_BALANCE)
         # 动作空间格式为买入x%，卖出x%以及持有
-        self.action_space = spaces.Box(low=[0, 0], high=[3, 1], dtype=np.float16)
+        self.action_space = spaces.Box(low=np.array([0, 0]), high=np.array([3, 1]), dtype=np.float16)
         # 观测到的为最近五个价格的OHCL值
         self.observation_space = spaces.Box(
-            low=0, high=1, shape=[19, ], dtype=np.float16)
+            low=0, high=1, shape=(19,), dtype=np.float16)
 
     def _next_observation(self):
         # 注意归一化处理

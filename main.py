@@ -46,7 +46,7 @@ def find_file(path, name):
     for root, dirs, files in os.walk(path):
         for file_name in files:
             if name in file_name:
-                return os.path.join(root, name)
+                return os.path.join(root, file_name)
 
 
 def test_stock_trading(stock_code):
@@ -54,7 +54,7 @@ def test_stock_trading(stock_code):
 
     daily_profits = train_stock_trading(stock_file)
     fig, ax = plt.subplots()
-    ax.plot(daily_profits, '-o', label=stock_code, maker='o', ms=10, alpha=0.7, mfc='orange')
+    ax.plot(daily_profits, '-o', label=stock_code, marker='o', ms=10, alpha=0.7, mfc='orange')
     ax.grid()
     plt.xlabel('step')
     plt.ylabel('profit')
@@ -64,7 +64,7 @@ def test_stock_trading(stock_code):
 
 
 if __name__ == '__main__':
-    test_stock_trading('sh.6ooo36')
+    test_stock_trading('sh.600036')
 
 
 
