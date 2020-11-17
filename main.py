@@ -13,6 +13,7 @@ import matplotlib.font_manager as fm
 
 font = fm.FontProperties(fname='font/wqy-microhei.ttc')
 # plt.rc('font', family='Source Han Sans CN')
+# pylot使用rc配置文件来自定义图形的各种默认属性
 plt.rcParams['axes.unicode_minus'] = False
 
 
