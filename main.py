@@ -64,8 +64,27 @@ def test_stock_trading(stock_code):
     plt.savefig(f'./img/{stock_code}.png')
 
 
+def batch_test():
+    start_code = 600000
+    max_num = 3000
+    group_results = []
+
+    for stock_code in range(start_code, start_code + max_num):
+        stock_file = find_file('./stock/train', str(stock_code))
+        if stock_file:
+            try:
+                profits = train_stock_trading(stock_file)
+                group_results.append(profits)
+            except Exception as error:
+                print(error)
+
+    with open(f'code-{start_code}-{start_code + max_num}.pkl', 'wb') as f:
+        pickle.dump(group_results, f)
+
+
 if __name__ == '__main__':
     test_stock_trading('sh.600036')
+    batch_test()
 
 
 
