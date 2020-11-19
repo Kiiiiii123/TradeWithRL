@@ -6,7 +6,7 @@ font = fm.FontProperties(fname='./font/wqy-microhei.ttc')
 
 
 def pie(profit_data):
-    # 饼图显示全部测试股票股票的盈亏占比
+    # 饼图显示盈亏占比
     # 每一块饼图外侧显示的说明文字
     labels = 'Profit', 'Loss', '0'
     sizes = [0, 0, 0]
@@ -29,7 +29,7 @@ def pie(profit_data):
 
 
 def hist(profit_data):
-    # 柱状图
+    # 柱状图显示盈亏量
     n_bins = 150
     fig, ax = plt.subplots()
     ax.hist(profit_data, bins=n_bins, density=True)
