@@ -70,7 +70,7 @@ def batch_test():
     group_results = []
 
     for stock_code in range(start_code, start_code + max_num):
-        stock_file = find_file('./stock/train', str(stock_code))
+        stock_file = find_file('./stockdata/train', str(stock_code))
         if stock_file:
             try:
                 profits = train_stock_trading(stock_file)
@@ -83,7 +83,8 @@ def batch_test():
 
 
 if __name__ == '__main__':
-    test_stock_trading('sh.600036')
+    # test_stock_trading('sh.600036')
+    # test_stock_trading('sz.002714')
     batch_test()
 
 
