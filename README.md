@@ -18,7 +18,7 @@
 
 #### Our trading strategy observes the parameters of every stock, such as opening price, closing price, volume, etc. Since some parameters have large values, to guarantee the convergence of network training, the observation values must be normalized into [-1, 1].
 
-| Parameters  | DESCRIPTION                  | DETAILS                                       |
+| Parameters  | Description                  | Details                                       |
 | ----------- | :--------------------------- | :-------------------------------------------- |
 | date        | trading date                 | Format: YYYY-MM-DD                            |
 | code        | stock code                   | Format: sh.600000; sh: Shanghai; sz: Shenzhen |
